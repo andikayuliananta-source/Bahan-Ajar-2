@@ -1,0 +1,170 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role (admin, kepala_sekolah, guru)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "enum": ["admin", "kepala_sekolah", "guru"] },
+        "schoolId": { "type": "string", "maxLength": 100 },
+        "schoolName": { "type": "string", "maxLength": 200 },
+        "nip": { "type": "string", "maxLength": 50 },
+        "subject": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    },
+    "School": {
+      "title": "School",
+      "description": "School profile entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 200 },
+        "npsn": { "type": "string", "maxLength": 20 },
+        "address": { "type": "string", "maxLength": 300 },
+        "district": { "type": "string", "maxLength": 100 },
+        "city": { "type": "string", "maxLength": 100 },
+        "province": { "type": "string", "maxLength": 100 },
+        "headmasterName": { "type": "string", "maxLength": 150 },
+        "headmasterNip": { "type": "string", "maxLength": 50 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "npsn"]
+    },
+    "TeachingModule": {
+      "title": "TeachingModule",
+      "description": "Modul Ajar 8-3-3-4 complete plan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "subject": { "type": "string", "maxLength": 100 },
+        "gradeLevel": { "type": "string", "maxLength": 50 },
+        "phase": { "type": "string", "maxLength": 20 },
+        "semester": { "type": "string", "maxLength": 20 },
+        "topic": { "type": "string", "maxLength": 200 },
+        "allocatedTime": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "enum": ["draft", "submitted", "approved", "revision"] },
+        "contentJson": { "type": "string", "maxLength": 500000 },
+        "schoolId": { "type": "string", "maxLength": 100 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "authorName": { "type": "string", "maxLength": 150 },
+        "reviewNotes": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "subject", "gradeLevel", "createdBy"]
+    },
+    "KokurikulerProgram": {
+      "title": "KokurikulerProgram",
+      "description": "Program Kokurikuler berbasis 8 Dimensi & Lintas Mapel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "theme": { "type": "string", "maxLength": 150 },
+        "topic": { "type": "string", "maxLength": 200 },
+        "gradeLevel": { "type": "string", "maxLength": 50 },
+        "academicYear": { "type": "string", "maxLength": 30 },
+        "status": { "type": "string", "enum": ["draft", "submitted", "approved", "active", "completed"] },
+        "contentJson": { "type": "string", "maxLength": 500000 },
+        "schoolId": { "type": "string", "maxLength": 100 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "authorName": { "type": "string", "maxLength": 150 },
+        "reviewNotes": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "theme", "topic", "gradeLevel", "createdBy"]
+    },
+    "Assessment": {
+      "title": "Assessment",
+      "description": "Perangkat asesmen diagnostik, formatif, sumatif",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "type": { "type": "string", "enum": ["diagnostik", "formatif", "sumatif"] },
+        "subject": { "type": "string", "maxLength": 100 },
+        "moduleId": { "type": "string", "maxLength": 100 },
+        "contentJson": { "type": "string", "maxLength": 300000 },
+        "schoolId": { "type": "string", "maxLength": 100 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "type", "createdBy"]
+    },
+    "Rubric": {
+      "title": "Rubric",
+      "description": "Rubrik penilaian analitik 4 level",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 100 },
+        "contentJson": { "type": "string", "maxLength": 300000 },
+        "schoolId": { "type": "string", "maxLength": 100 },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "createdBy"]
+    },
+    "Template": {
+      "title": "Template",
+      "description": "Template modul ajar dan kokurikuler",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "type": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 500 },
+        "category": { "type": "string", "maxLength": 100 },
+        "contentJson": { "type": "string", "maxLength": 500000 },
+        "isPublic": { "type": "string" },
+        "createdBy": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "type", "createdBy"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and credentials"
+    },
+    "/schools/{schoolId}": {
+      "schema": "School",
+      "description": "School profiles"
+    },
+    "/teaching_modules/{moduleId}": {
+      "schema": "TeachingModule",
+      "description": "Modul Ajar Pembelajaran Mendalam documents"
+    },
+    "/kokurikuler_programs/{programId}": {
+      "schema": "KokurikulerProgram",
+      "description": "Kokurikuler programs documents"
+    },
+    "/assessments/{assessmentId}": {
+      "schema": "Assessment",
+      "description": "Assessment instruments"
+    },
+    "/rubrics/{rubricId}": {
+      "schema": "Rubric",
+      "description": "Rubrics for assessment"
+    },
+    "/templates/{templateId}": {
+      "schema": "Template",
+      "description": "Curriculum templates"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "PENDEKAR MODUL AJAR DAN KOKURIKULER AI",
+  "description": "Generator Cerdas Modul Ajar, Asesmen, Rubrik, dan Program Kokurikuler Berbasis Pembelajaran Mendalam 8–3–3–4 Kemendikdasmen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
